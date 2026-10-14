@@ -6,10 +6,10 @@ const followSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, 'Follower is required']
     },
-    followee: {
+    following: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: [true, 'Followee is required']
+        required: [true, 'Following is required']
     }
 }, {
     timestamps: true
