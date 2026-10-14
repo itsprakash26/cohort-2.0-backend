@@ -16,11 +16,20 @@ app.post("/notes", async (req, res) => {
 })
 app.get("/notes", async (req,res)=>{
     const note = await noteModule.find()
-    res.status(201).json({
+    res.status(200).json({
         massage:"note feched",
         note
     })
 })
+app.delete("/notes/:id" , async (req,res)=>{
+    const { id } = req.params
+    const note = await noteModule.findByIdAndDelete(id)
+    res.status(200).json({
+        massage:"note deleted",
+        note
+    })
+})
+
 
 
 module.exports = app;

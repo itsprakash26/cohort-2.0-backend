@@ -12,4 +12,6 @@ postRouter.post("/", upload.single("imgfile"), createPostController.createPostCo
 
 postRouter.get("/", createPostController.getPostController)
 
+postRouter.get("/details/:postId", createPostController.getPostDetailsController)
+
 module.exports = postRouter;
