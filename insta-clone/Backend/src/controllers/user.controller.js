@@ -1,11 +1,18 @@
-const userModel = require("../models/user.model");
+const followModel = require('../models/follow.model')
 
 
 async function followUserController(req, res) {
     const followerUsername = req.user.username
     const followingUsername = req.params.username
 
-    const followRecord = await userModel.create({
+    if(followerUsername === followingUsername) {
+        return res.status(400).json({
+            message: "You cannot follow yourself"
+        })
+    }
+
+
+    const followRecord = await followModel.create({
         follower: followerUsername,
         following: followingUsername
     })

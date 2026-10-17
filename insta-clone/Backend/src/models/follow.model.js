@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const followSchema = new mongoose.Schema({
-    follower: {
-        type: string,
-    },
-    following: {
-        type: string,
-    }
+   follower: {
+        type: String,
+   },
+   following: {
+        type: String,
+   }           
 }, {
     timestamps: true
 
