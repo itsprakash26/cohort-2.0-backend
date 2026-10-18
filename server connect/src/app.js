@@ -4,6 +4,12 @@ const noteModule = require("./models/notes.model")
 
 const app = express()
 app.use(express.json())
+/**
+ * post /notes
+ * get /notes
+ * delete /notes/:id
+ */
+
 
 app.post("/notes", async (req, res) => {
     const { title, description } = req.body

@@ -19,4 +19,11 @@ postRouter.get("/", identifyUser, createPostController.getPostController)
  */
 postRouter.get("/details/:postId", identifyUser, createPostController.getPostDetailsController)
 
+/**
+ * POST /api/posts/like/:postId [protected]
+ * req.params: { postId }
+ */
+postRouter.post("/like/:postId", identifyUser, createPostController.likePostController)  
+ 
+
 module.exports = postRouter;
