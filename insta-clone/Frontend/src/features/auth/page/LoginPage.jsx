@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "../styles/form.scss";
 import { Link } from "react-router";
 import axios from "axios";
+=======
+import React from 'react'
+import '../styles/form.scss'
+import { Link } from "react-router";
+>>>>>>> f09323534822a7693c124dbd3787f15bedb32998
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -49,11 +55,15 @@ const LoginPage = () => {
           <button type="submit">Login</button>
         </form>
         <p>
+<<<<<<< HEAD
           Alraedy have an account?{" "}
           <Link to="/register" className="toggleAuthform">
             {" "}
             Register
           </Link>
+=======
+          Alraedy have an account? <Link to="/register" className="toggleAuthform"> Register</Link>
+>>>>>>> f09323534822a7693c124dbd3787f15bedb32998
         </p>
       </div>
     </main>

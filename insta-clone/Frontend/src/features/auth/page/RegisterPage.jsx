@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "../styles/form.scss";
 import { Link } from "react-router";
 import axios from "axios";
+=======
+import React from "react";
+import "../styles/form.scss";
+import { Link } from "react-router";
+>>>>>>> f09323534822a7693c124dbd3787f15bedb32998
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -31,6 +37,7 @@ const RegisterPage = () => {
     <main>
       <div className="form-container">
         <h1>Register</h1>
+<<<<<<< HEAD
         <form onSubmit={submitHandel}>
           <input
             onInput={(e) => {
@@ -64,6 +71,16 @@ const RegisterPage = () => {
             {" "}
             Login
           </Link>
+=======
+        <form>
+          <input type="text" name="username" placeholder="Username" />
+          <input type="email" name="email" placeholder="Enter Your Email" />
+          <input type="password" name="password" placeholder="Password" />
+          <button type="submit">Login</button>
+        </form>
+        <p>
+          Alraedy have an account? <Link to="/login" className="toggleAuthform"> Login</Link>
+>>>>>>> f09323534822a7693c124dbd3787f15bedb32998
         </p>
       </div>
     </main>
