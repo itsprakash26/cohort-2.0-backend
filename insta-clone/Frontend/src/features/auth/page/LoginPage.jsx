@@ -1,69 +1,69 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import "../styles/form.scss";
-import { Link } from "react-router";
-import axios from "axios";
-=======
-import React from 'react'
-import '../styles/form.scss'
-import { Link } from "react-router";
->>>>>>> f09323534822a7693c124dbd3787f15bedb32998
+import { Link, useNavigate } from "react-router";
+import { login } from "../services/auth.api";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginPage = () => {
+  const { user, loading, handleLogin } = useAuth();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   async function submithandler(e) {
     e.preventDefault();
-    axios
-      .post(
-        "http://localhost:3000/api/auth/login",
-        {
-          username,
-          password,
-        },
-        {
-          withCredentials: true,
-        },
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
+
+    await handleLogin(username, password);
+    navigate("/");
+
+    try {
+      const data = await login(username, password);
+
+      console.log(data);
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+    }
+
+  }
+
+  if(loading){
+    return (<main>
+      <h1>Loading....</h1>
+    </main>)
   }
 
   return (
     <main>
       <div className="form-container">
         <h1>Login</h1>
+
         <form onSubmit={submithandler}>
           <input
-            onInput={(e) => {
-              setUsername(e.target.value);
-            }}
+            onChange={(e) => setUsername(e.target.value)}
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="Username"
+            required
           />
+
           <input
-            onInput={(e) => {
-              setPassword(e.target.value);
-            }}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="Password"
+            required
           />
+
           <button type="submit">Login</button>
         </form>
+
         <p>
-<<<<<<< HEAD
-          Alraedy have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/register" className="toggleAuthform">
-            {" "}
             Register
           </Link>
-=======
-          Alraedy have an account? <Link to="/register" className="toggleAuthform"> Register</Link>
->>>>>>> f09323534822a7693c124dbd3787f15bedb32998
         </p>
       </div>
     </main>
