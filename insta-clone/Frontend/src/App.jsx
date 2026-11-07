@@ -1,22 +1,14 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router'
-import LoginPage from './features/auth/page/LoginPage'
-import RegisterPage from './features/auth/page/RegisterPage'
-import './style.scss'
-
+import React from "react";
+import { RouterProvider } from "react-router";
+import { router } from "./app.routes";
+import {  AuthProvider } from "./features/auth/auth.contex";
 
 const App = () => {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </Router>
-    </>
-  )
-}
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
+};
 
-
-export default App
+export default App;
