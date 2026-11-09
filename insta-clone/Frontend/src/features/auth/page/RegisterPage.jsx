@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/form.scss";
-import { Link , useNavigate} from "react-router";
+import { Link, useNavigate } from "react-router";
 import { register } from "../services/auth.api";
 import { useAuth } from "../hooks/useAuth";
 
@@ -27,10 +27,12 @@ const RegisterPage = () => {
       console.error(error.response?.data || error.message);
     }
   }
-  if(loading){
-    return (<main>
-      <h1>Loading....</h1>
-    </main>)
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading....</h1>
+      </main>
+    );
   }
 
   return (
