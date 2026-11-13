@@ -1,8 +1,8 @@
 const express = require("express");
-const postRouter = express.Router(); 
+const postRouter = express.Router();
 const createPostController = require("../controllers/post.controller")
 const multer = require("multer");
-const upload = multer({storage: multer.memoryStorage()}) // Store the uploaded file in memory
+const upload = multer({ storage: multer.memoryStorage() }) // Store the uploaded file in memory
 const identifyUser = require("../middleware/auth.middleware")
 /**
  * POST /api/posts [protected]
@@ -23,7 +23,12 @@ postRouter.get("/details/:postId", identifyUser, createPostController.getPostDet
  * POST /api/posts/like/:postId [protected]
  * req.params: { postId }
  */
-postRouter.post("/like/:postId", identifyUser, createPostController.likePostController)  
- 
+postRouter.post("/like/:postId", identifyUser, createPostController.likePostController)
+/**
+ * @route GET /api/posts/feed
+ * @description get aal the post created in the db 
+ * @access private
+ */
+postRouter.get("/feed", identifyUser, createPostController.getFeedController)
 
 module.exports = postRouter;

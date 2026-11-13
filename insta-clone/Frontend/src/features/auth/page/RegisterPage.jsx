@@ -5,7 +5,7 @@ import { register } from "../services/auth.api";
 import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  const { user, loading, handleRegister } = useAuth();
+  const { loading, handleRegister } = useAuth();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
